@@ -4,20 +4,9 @@ import { Card, CardImg, CardBody, CardTitle, CardImgOverlay,CardText } from 'rea
 //import { DISHES } from '../shared/dishes';
 //import { render } from '@testing-library/react';
 
-class Dishdetail extends Component{
-    constructor(props){
-      super(props);
 
-      this.state = {
-        selectedDish:null
-    }
-       
-    }
-  //   onDishSelect(dish){
-  //     this.setState({ selectedDish: dish});
-  // } 
-         
-        renderDish(dish){
+     
+       function  RenderDish({dish}){
               
                 if(dish != null)
                return(
@@ -37,23 +26,24 @@ class Dishdetail extends Component{
             
           
         }
-
+      
    
           
             
 
-         render(){
+        const Dishdetail=(props)=>{
             return(
                 <div className="container" >
                   <div className="row">
-                   {this.renderDish(this.props.theDish)}
+                   <RenderDish dish={props.theDish}/>
                   </div>
                 </div>
             );
-       }
+         }
+        
        
 
-}
+
 
 
 export default Dishdetail;
