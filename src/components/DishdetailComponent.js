@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardImgOverlay,CardText } from 'reactstrap';
-import  Menu from '../components/MenuComponent';
-import { DISHES } from '../shared/dishes';
+//import  Menu from '../components/MenuComponent';
+//import { DISHES } from '../shared/dishes';
 //import { render } from '@testing-library/react';
 
-class DishDetail extends Component{
+class Dishdetail extends Component{
     constructor(props){
       super(props);
 
@@ -56,4 +56,4 @@ class DishDetail extends Component{
 }
 
 
-export default DishDetail;
+export default Dishdetail;
