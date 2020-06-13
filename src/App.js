@@ -1,9 +1,12 @@
 import React,{Component} from 'react';
-import {logo} from './logo.svg';
 import './App.css';
 import { Navbar, NavbarBrand} from 'reactstrap';
 import  Menu from './components/MenuComponent';
 import { DISHES } from './shared/dishes';
+import Dishdetail from './components/DishdetailComponent';
+import Name, {Greet}  from './components/experiment';
+import  Count from'./components/experiment2';
+import  Input from'./components/hooks';
 
 
 class App extends Component{
@@ -11,10 +14,14 @@ class App extends Component{
   constructor(props){
       super(props);
         this.state ={
-            dishes : DISHES
+            dishes: DISHES,
+            selectedDish: null
+
         };
+        
 
   }
+ 
   render(){
 
     return (
@@ -25,9 +32,14 @@ class App extends Component{
             </div>
           </Navbar>
 
-          <Menu dishes={this.state.dishes} />
+          <Menu dishes={this.state.dishes} selectedDish={this.state.selectedDish} />
+         
+          <Greet name="everyone" char="good"/>
+          <Name/>
+          <Count/>
+          <Input />
 
-     </div>
+       </div>
     );
   }
 }
