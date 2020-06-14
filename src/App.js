@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import './App.css';
+import Header from './components/HeaderComponent';
+import Footer from './components/FooterComponent';
 //import { Navbar, NavbarBrand} from 'reactstrap';
 //import  Menu from './components/MenuComponent';
 //import { DISHES } from './shared/dishes';
@@ -13,34 +15,21 @@ class App extends Component{
 
   constructor(props){
       super(props);
-        // this.state ={
-        //     dishes: DISHES,
-        //     selectedDish: null
-
-        // };
+       
         
 
   }
  
   render(){
 
-    return (
-      
+    return (   
         <div className="App">
-           {/* <Navbar dark color="primary">
-             <div className="container" >
-               <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-             </div>
-           </Navbar>
-                 
-           <Greet name="everyone" char="good"/>
-           <Name/>
-           <Count/>
-           <Input /> */}
-
+            <Header />
         
-      <MainComponent  />
-      </div>
+            <MainComponent  />
+            
+            <Footer />
+        </div>
     );
   }
 }

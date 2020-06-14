@@ -27,11 +27,7 @@ class MainComponent extends Component{
 
     return (
        <div>
-          <Navbar dark color="primary">
-            <div className="container" >
-              <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-            </div>
-          </Navbar>
+         
 
           <Menu dishes={this.state.dishes} onClick={(dishId)=>this.onDishSelect(dishId) } />
           {/* dish id of the clicked dish is passed as a parameter from menu comp. to the selectedDish which is then used to pass that dish details as props to the dish detail comp.

@@ -25,7 +25,7 @@ import { DISHES } from '../shared/dishes';
     });
 
     return(
-      <div className="container">
+      <div className="container ">
           <div className="row">
               {menu}
           </div>
