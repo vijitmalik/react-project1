@@ -6,6 +6,8 @@ import  Count from'./experiment2';
 import  Input from'./hooks';
 import Menu from './MenuComponent';
 import Dishdetail from './DishdetailComponent';
+import Home from './HomeComponent';
+import { Switch, Route, Redirect, Router } from 'react-router-dom';
 
 class MainComponent extends Component{
 
@@ -14,29 +16,34 @@ class MainComponent extends Component{
 
         this.state ={
             dishes: DISHES,
-            selectedDish: null       
+               
         }
 
     }
  
-    onDishSelect(dishId){
-        this.setState({selectedDish: dishId});
-    };
 
   render(){
+        const HomePage=()=>{
+          return(
+            <Home/>
+          );
+        }
 
     return (
        <div>
-         
+          <Switch>
+            <Route path='/home' component={HomePage}/>
+            <Route exact path ="/menu" component={() => <Menu dishes={this.state.dishes}/>} />
+            <Redirect to="/home" />
+          </Switch>
 
-          <Menu dishes={this.state.dishes} onClick={(dishId)=>this.onDishSelect(dishId) } />
+          
           {/* dish id of the clicked dish is passed as a parameter from menu comp. to the selectedDish which is then used to pass that dish details as props to the dish detail comp.
           - [0] is the first element in array because the javascript filter returns sub array based on a condition */}
-          <Dishdetail theDish={this.state.dishes.filter((dish) => dish.id== this.state.selectedDish )[0]  } />
-          <Greet name="everyone" char="good"/>
-          <Name/>
-          <Count/>
-          <Input />
+           {/* <Greet name="everyone" char="good"/> */}
+          {/* <Name/> */}
+          {/* <Count/> */}
+          {/* <Input /> */}
 
        </div>
     );

@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './App.css';
 import Header from './components/HeaderComponent';
 import Footer from './components/FooterComponent';
+import { BrowserRouter} from 'react-router-dom';
 //import { Navbar, NavbarBrand} from 'reactstrap';
 //import  Menu from './components/MenuComponent';
 //import { DISHES } from './shared/dishes';
@@ -23,6 +24,7 @@ class App extends Component{
   render(){
 
     return (   
+      <BrowserRouter>
         <div className="App">
             <Header />
         
@@ -30,6 +32,7 @@ class App extends Component{
             
             <Footer />
         </div>
+      </ BrowserRouter>
     );
   }
 }
