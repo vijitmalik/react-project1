@@ -5,13 +5,15 @@ import Name, {Greet}  from './experiment';
 import  Count from'./experiment2';
 import  Input from'./hooks';
 import Menu from './MenuComponent';
-import Dishdetail from './DishdetailComponent';
+import DishDetail from './DishdetailComponent';
 import Home from './HomeComponent';
 import { Switch, Route, Redirect, Router } from 'react-router-dom';
+import About from './Aboutus'; 
 import Contact from './ContactComponent'
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+
 
 
 class MainComponent extends Component{
@@ -28,8 +30,16 @@ class MainComponent extends Component{
 
     }
  
+   
 
   render(){
+    const DishWithId=({match})=>{
+      return(
+        <DishDetail dish={this.state.dishes.filter((dish) => dish.id===parseInt(match.params.dishId,10))[0] } 
+        />
+      );
+    };
+
         const HomePage=(props)=>{
           return(
             <Home
@@ -39,12 +49,15 @@ class MainComponent extends Component{
            />
           );
         }
+        
 
     return (
        <div>
           <Switch>
             <Route path='/home' component={(props)=><HomePage/>}/>
             <Route exact path ="/menu" component={() => <Menu dishes={this.state.dishes}/>} />
+            <Route path = '/menu/:dishId' component={DishWithId} />
+            <Route path='/aboutus' component = {() => <About leaders={this.state.leaders}/>    } />
             <Route path='/contactus' component={()=> <Contact />} />
             <Redirect to="/home" />
 

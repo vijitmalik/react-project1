@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardImgOverlay,CardText } from 'reactstrap';
-//import Dishdetail from '../components/DishdetailComponent';
+import { Card, CardImg, CardBody, CardTitle, CardImgOverlay,CardText,Breadcrumb, BreadcrumbItem } from 'reactstrap';
+//import DishDetail from '../components/DishdetailComponent';
 import { DISHES } from '../shared/dishes';
+import {Link} from 'react-router-dom';
 
   const RenderMenuItem=({dish})=>{
     return(
       <Card >
-        <CardImg width="100%" src={dish.image} alt={dish.name} />
-          <CardImgOverlay >
-             <CardTitle>{dish.name}</CardTitle>
-
+          <Link to = {`/menu/${dish.id}`} >
+            <CardImg width="100%" src={dish.image} alt={dish.name} />
+              <CardImgOverlay >
+                <CardTitle>{dish.name}</CardTitle>
           </CardImgOverlay>
+        </Link>
       </Card>
     )
   }
@@ -26,6 +28,12 @@ import { DISHES } from '../shared/dishes';
 
     return(
       <div className="container ">
+        <div className="row">
+                      <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Menu</BreadcrumbItem>
+                      </Breadcrumb>
+        </div>
           <div className="row">
               {menu}
           </div>
