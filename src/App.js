@@ -3,14 +3,10 @@ import './App.css';
 import Header from './components/HeaderComponent';
 import Footer from './components/FooterComponent';
 import { BrowserRouter} from 'react-router-dom';
-//import { Navbar, NavbarBrand} from 'reactstrap';
-//import  Menu from './components/MenuComponent';
-//import { DISHES } from './shared/dishes';
-//import Dishdetail from './components/DishdetailComponent';
-// import Name, {Greet}  from './components/experiment';
-// import  Count from'./components/experiment2';
-// import  Input from'./components/hooks';
 import MainComponent from './components/MainComponent';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configureStore';
+ const store= ConfigureStore();
 
 class App extends Component{
 
@@ -24,15 +20,17 @@ class App extends Component{
   render(){
 
     return (   
-      <BrowserRouter>
-        <div className="App">
-            <Header />
-        
-            <MainComponent  />
-            
-            <Footer />
-        </div>
-      </ BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <div className="App">
+              <Header />
+          
+              <MainComponent  />
+              
+              <Footer />
+          </div>
+        </ BrowserRouter>
+      </Provider>
     );
   }
 }

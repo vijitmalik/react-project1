@@ -14,27 +14,59 @@ class Contact extends Component{
             email: '',
             agree: false,
             contactType: 'Tel.',
-            message: ''
+            message: '',
+            
         };
+        this.Validate={
+            firstnameError:'',
+            lastnameError:'',
+            telnumError: '',
+            emailError: '',
+            messageError: '',
 
-        this.handleInputChange=this.handleInputChange.bind(this);
+        }
+
+        // this.handleInputChange=this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }  
     
 
-                handleInputChange(event){
-                    let target = event.target;
-                    let name = target.name;
-                    let value = target.type==='checkbox' ? target.checked : target.value;
-                    this.setState({
-                        [name]: value
-                    });
+                // handleInputChange(event){
+                //     let target = event.target;
+                //     let name = target.name;
+                //     let value = target.type==='checkbox' ? target.checked : target.value;
+                //     this.setState({
+                //         [name]: value
+                //     });
                     
+                // }
+                
+            valid(){
+                
+                if(this.state.firstname.length <=3 | this.state.firstname.length >10 ){
+                    this.setState({firstnameError: 'length should be between 3 to 10 characters' });
+                }
+                
+                if(this.state.lastname.length <=3 | this.state.firstname.length >10 ){
+                    this.setState({firstnameError: 'length should be between 3 to 10 characters' });
+                }
+                const reg= /^\d+$/;
+                if(!reg.test(this.state.telnum)  ){
+                    this.setState({telnumError: 'tel must contain numbers only' });
+                }
+                else{
+                    return(true);
+                }
             }
-
+            
             handleSubmit(event){
-                alert('Current State is: ' + JSON.stringify(this.state));
-                    event.preventDefault();
+                event.preventDefault();
+
+                if(this.valid()){
+                    alert('Current State is: ' + JSON.stringify(this.state));
+                    console.log("current state is " + JSON.stringify(this.state));
+                }
+          
             }
 
     render(){
@@ -88,18 +120,22 @@ class Contact extends Component{
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
                                     <Input type="text" id="firstname" name="firstname"
-                                        placeholder="First Name"
-                                        value={this.state.firstname}
-                                        onChange={this.handleInputChange} />
-                                </Col>
+                                        placeholder="First Name"     
+                                        onChange={(event)=>{ this.setState({firstname:event.target.value}) } } />
+                                     
+                                     <p>{this.state.firstnameError}</p>                    
+                                </Col>           
+                                                   
                             </FormGroup>
                             <FormGroup row>
                                 <Label htmlFor="lastname" md={2}>Last Name</Label>
                                 <Col md={10}>
                                     <Input type="text" id="lastname" name="lastname"
                                         placeholder="Last Name"
-                                        value={this.state.lastname}
-                                        onChange={this.handleInputChange} />
+                                        // value={this.state.lastname}
+                                        // onChange={this.handleInputChange}
+                                        onChange={(event)=>{ this.setState({lastname:event.target.value}) } } />
+                                     <p>{this.state.lastnameError}</p>
                                 </Col>                        
                             </FormGroup>
                             <FormGroup row>
@@ -107,8 +143,10 @@ class Contact extends Component{
                                 <Col md={10}>
                                     <Input type="tel" id="telnum" name="telnum"
                                         placeholder="Tel. number"
-                                        value={this.state.telnum}
-                                        onChange={this.handleInputChange} />
+                                        // value={this.state.telnum}
+                                        // onChange={this.handleInputChange} 
+                                        onChange={(event)=>{ this.setState({telnum:event.target.value}) } }/>
+                                     <p>{this.state.telnumError}</p>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -116,9 +154,12 @@ class Contact extends Component{
                                 <Col md={10}>
                                     <Input type="email" id="email" name="email"
                                         placeholder="Email"
-                                        value={this.state.email}
-                                        onChange={this.handleInputChange} />
+                                        // value={this.state.email}
+                                        // onChange={this.handleInputChange}
+                                        onChange={(event)=>{ this.setState({email:event.target.value}) } } />
+                                     <p>{this.state.emailError}</p>
                                 </Col>
+                                    <p>{this.state.emailError}</p>
                             </FormGroup>
                             <FormGroup row>
                                 <Col md={{size: 6, offset: 2}}>
@@ -126,16 +167,18 @@ class Contact extends Component{
                                         <Label check>
                                             <Input type="checkbox"
                                                 name="agree"
-                                                checked={this.state.agree}
-                                                onChange={this.handleInputChange} /> {' '}
+                                                // checked={this.state.agree}
+                                                // onChange={this.handleInputChange}
+                                                onChange={(event)=>{ this.setState({agree:event.target.checked} )}} /> {' '}
                                             <strong>May we contact you?</strong>
                                         </Label>
                                     </FormGroup>
                                 </Col>
                                 <Col md={{size: 3, offset: 1}}>
                                     <Input type="select" name="contactType"
-                                            value={this.state.contactType}
-                                            onChange={this.handleInputChange}>
+                                            // value={this.state.contactType}
+                                            // onChange={this.handleInputChange}
+                                            onChange={(event)=>{ this.setState({contactType:event.target.value}) } }>
                                         <option>Tel.</option>
                                         <option>Email</option>
                                     </Input>
@@ -146,8 +189,10 @@ class Contact extends Component{
                                 <Col md={10}>
                                     <Input type="textarea" id="message" name="message"
                                         rows="12"
-                                        value={this.state.message}
-                                        onChange={this.handleInputChange}></Input>
+                                        // value={this.state.message}
+                                        // onChange={this.handleInputChange}
+                                        onChange={(event)=>{ this.setState({message:event.target.value}) } }></Input>
+                                     <p>{this.state.messageError}</p>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>

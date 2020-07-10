@@ -11,9 +11,9 @@ import {Link} from 'react-router-dom';
               
                 if(dish != null)
                return(
-                <div>               
-                    <Card>
-                        <CardImg width="100%"  src={`/${dish.image}`} alt={dish.name} />
+                <div className="row col-6">               
+                    <Card  >
+                        <CardImg width="50px" src={`/${dish.image}`} alt={dish.name} />
                       <CardBody >
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText> {dish.description} </CardText>
@@ -24,7 +24,7 @@ import {Link} from 'react-router-dom';
                
           
                else
-                 return(<div>AAAAsdegsiducgsiucsdbcsics</div >);
+                 return(<div></div >);
             
           
         }
